@@ -1,0 +1,99 @@
+.pomodoro-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  margin: 20px auto;
+}
+
+.visual-representation {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    background-color: #f0f0f0; /* Light gray background */
+    border: 10px solid #007bff; /* Blue border */
+    position: relative;
+  }
+  
+  .visual-representation::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 10px solid transparent;
+    background-color: transparent;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+  }
+  
+  
+  .visual-representation {
+    --progress: 0; /* initial value */
+    border-radius: 50%;
+    /* Rest of the existing styles */
+    background-clip: content-box, padding-box;
+    /* Add the following styles to create the progress ring effect */
+    &::before {
+      background-image: conic-gradient(#007bff var(--progress), #f0f0f0 var(--progress));
+      mask: radial-gradient(circle closest-side, #007bff 100%, transparent 100%);
+      -webkit-mask: radial-gradient(circle closest-side, #007bff 100%, transparent 100%);
+      mask-size: 100% 100%;
+    }
+  }
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.time {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+.controls button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 1em;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+button:active {
+  background-color: #ccc;
+}
+
+.threejs-container {
+  width: 100%;
+  height: 400px;
+}

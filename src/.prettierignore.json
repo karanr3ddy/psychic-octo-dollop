@@ -1,0 +1,8 @@
+// filepath: /C:/Users/karan/Projects/my-vite-app/.prettierignore
+node_modules
+build
+dist
+.cache
+.next
+coverage
+public

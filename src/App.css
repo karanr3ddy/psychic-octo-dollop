@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+#root {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.container {
+  position: relative;
+  z-index: 10;
+}
+
+.pdf-compressor, .image-compressor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pdf-compressor input, .image-compressor input {
+  margin-bottom: 10px;
+}
+
+.pdf-compressor button, .image-compressor button {
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pdf-compressor button:disabled, .image-compressor button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.compression-options {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.compression-options label {
+  margin-bottom: 5px;
+}
+
+.news-component ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.news-component li {
+  margin-bottom: 1rem;
+}
+
+.news-component a {
+  font-weight: bold;
+  color: #1a202c;
+}
+
+.news-component a:hover {
+  text-decoration: underline;
+}
