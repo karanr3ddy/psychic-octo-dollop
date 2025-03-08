@@ -1,7 +1,7 @@
 import './App.css';
 import Calculator from './components/Calculator';
 import PdfCompressor from './components/PdfCompressor';
-import { ImageCompressor } from './components/ImageCompressor';
+import ImageCompressor from './components/ImageCompressor/ImageCompressor';
 import NewsComponent from './components/NewsComponent';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
