@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { PDFDocument } from 'pdf-lib';
 
 const PdfCompressor: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
   const [compressedFile, setCompressedFile] = useState<Blob | null>(null);
   const [dragActive, setDragActive] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0] || null;
@@ -26,6 +27,10 @@ const PdfCompressor: React.FC = () => {
     setDragActive(false);
     const selectedFile = event.dataTransfer.files?.[0] || null;
     setFile(selectedFile);
+  };
+
+  const handleClick = () => {
+    fileInputRef.current?.click();
   };
 
   const compressPdf = async () => {
@@ -61,16 +66,21 @@ const PdfCompressor: React.FC = () => {
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
+        onClick={handleClick}
       >
         <input
           type="file"
           accept="application/pdf"
           onChange={handleFileChange}
           className="hidden"
+          ref={fileInputRef}
         />
         <p className="text-gray-500">
           Drag and drop a PDF file here, or click to select a file
         </p>
+        {file && (
+          <p className="text-gray-700 mt-2">Selected file: {file.name}</p>
+        )}
       </div>
       <button
         onClick={compressPdf}

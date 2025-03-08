@@ -65,24 +65,37 @@ const ImageCompressor: React.FC = () => {
     URL.revokeObjectURL(url);
   };
 
+  const handleClick = () => {
+    document.getElementById('fileInput')?.click();
+  };
+
   return (
     <div className="image-compressor flex flex-col items-center">
       <div
-        className={`border-2 border-dashed p-4 mb-2 ${dragActive ? 'border-blue-500' : 'border-gray-300'}`}
+        className={`border-2 border-dashed p-4 mb-2 cursor-pointer ${dragActive ? 'border-blue-500' : 'border-gray-300'}`}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
+        onClick={handleClick}
       >
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleFileChange}
-          className="hidden"
-        />
+        <label htmlFor="fileInput" className="cursor-pointer">
+          <input
+            id="fileInput"
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            className="hidden"
+          />
+        </label>
         <p className="text-gray-500">
           Drag and drop an image file here, or click to select a file
         </p>
       </div>
+      {file && (
+        <div className="selected-file mb-2">
+          <p>Selected file: {file.name}</p>
+        </div>
+      )}
       <div className="compression-options flex flex-col items-start mb-2">
         <label className="mb-1">
           Max Size (MB):

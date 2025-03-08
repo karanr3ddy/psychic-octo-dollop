@@ -13,7 +13,7 @@ function App() {
     <>
       {/* <ThreeBackground /> */}
       <div className="container mx-auto p-4 relative z-10">
-        <h1 className="text-2xl font-bold mb-4">Hello World</h1>
+        <h1 className="text-2xl font-bold mb-4">Tools App</h1>
         <Tabs>
           <TabList>
             <Tab>Calculator</Tab>
