@@ -14,7 +14,7 @@ const NewsComponent: React.FC = () => {
           'https://api.thenewsapi.com/v1/news/top',
           {
             params: {
-              api_token: 'HW98srglDvyiB79URBYFESWozuUMJNcKaFNLCl3P', // Replace with your API key
+              api_token: import.meta.env.VITE_NEWS_API_KEY, // Replace with your API key
               locale: 'in',
             },
           }
