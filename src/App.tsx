@@ -7,11 +7,12 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import UnitConverter from './components/UnitConverter/UnitConverter';
 import PomodoroTimer from './components/PomodoroTimer/PomodoroTimer';
+import ParticlesBackground from './components/ParticlesBackground'; // Add this import
 
 function App() {
   return (
     <>
-      {/* <ThreeBackground /> */}
+      <ParticlesBackground /> {/* Add this line */}
       <div className="container mx-auto p-4 relative z-10">
         <h1 className="text-2xl font-bold mb-4">Tools App</h1>
         <Tabs>
