@@ -44,15 +44,10 @@ const UnitConverter: React.FC = () => {
       <h2 className="text-xl font-bold mb-4 text-center text-black">
         Pixel (px) to Rem (rem) Converter
       </h2>
-      {error && (
-        <p className="text-red-500 text-center mb-4">{error}</p>
-      )}
+      {error && <p className="text-red-500 text-center mb-4">{error}</p>}
       <div className="flex flex-col md:flex-row gap-4">
         <div className="mb-4 flex-1">
-          <label
-            htmlFor="px"
-            className="block text-gray-700 font-bold mb-1"
-          >
+          <label htmlFor="px" className="block text-gray-700 font-bold mb-1">
             Pixels (px):
           </label>
           <input
@@ -65,10 +60,7 @@ const UnitConverter: React.FC = () => {
           />
         </div>
         <div className="flex-1">
-          <label
-            htmlFor="rem"
-            className="block text-gray-700 font-bold mb-1"
-          >
+          <label htmlFor="rem" className="block text-gray-700 font-bold mb-1">
             Rems (rem):
           </label>
           <input

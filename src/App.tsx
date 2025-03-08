@@ -1,16 +1,14 @@
 import './App.css';
 import Calculator from './components/Calculator';
 import PdfCompressor from './components/PdfCompressor';
-import {ImageCompressor} from './components/ImageCompressor';
+import { ImageCompressor } from './components/ImageCompressor';
 import NewsComponent from './components/NewsComponent';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import UnitConverter from './components/UnitConverter/UnitConverter';
 import PomodoroTimer from './components/PomodoroTimer/PomodoroTimer';
 
-
 function App() {
-
   return (
     <>
       {/* <ThreeBackground /> */}

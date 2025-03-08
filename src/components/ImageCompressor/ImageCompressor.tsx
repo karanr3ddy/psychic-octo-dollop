@@ -33,7 +33,9 @@ const ImageCompressor: React.FC = () => {
     setFile(selectedFile);
   };
 
-  const handleCompressionOptionsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCompressionOptionsChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const { name, value } = event.target;
     setCompressionOptions((prevOptions) => ({
       ...prevOptions,
@@ -71,8 +73,15 @@ const ImageCompressor: React.FC = () => {
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
       >
-        <input type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
-        <p className="text-gray-500">Drag and drop an image file here, or click to select a file</p>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleFileChange}
+          className="hidden"
+        />
+        <p className="text-gray-500">
+          Drag and drop an image file here, or click to select a file
+        </p>
       </div>
       <div className="compression-options flex flex-col items-start mb-2">
         <label className="mb-1">
@@ -96,11 +105,18 @@ const ImageCompressor: React.FC = () => {
           />
         </label>
       </div>
-      <button onClick={compressImage} disabled={!file} className="mb-2 bg-green-500 text-white py-2 px-4 rounded">
+      <button
+        onClick={compressImage}
+        disabled={!file}
+        className="mb-2 bg-green-500 text-white py-2 px-4 rounded"
+      >
         Compress Image
       </button>
       {compressedFile && (
-        <button onClick={downloadCompressedImage} className="bg-green-500 text-white py-2 px-4 rounded">
+        <button
+          onClick={downloadCompressedImage}
+          className="bg-green-500 text-white py-2 px-4 rounded"
+        >
           Download Compressed Image
         </button>
       )}

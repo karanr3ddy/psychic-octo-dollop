@@ -13,15 +13,17 @@ const PomodoroTimer: React.FC = () => {
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(false);
   const [percentage, setPercentage] = useState(0);
-  const [timerOption, setTimerOption] = useState<TimerOption>({label: "25 Minutes", minutes: 25});
+  const [timerOption, setTimerOption] = useState<TimerOption>({
+    label: '25 Minutes',
+    minutes: 25,
+  });
 
   const timerOptions: TimerOption[] = [
-    { label: "5 M", minutes: 5 },
-    { label: "10 M", minutes: 10 },
-    { label: "25 M", minutes: 25 },
- // Added for custom time input
+    { label: '5 M', minutes: 5 },
+    { label: '10 M', minutes: 10 },
+    { label: '25 M', minutes: 25 },
+    // Added for custom time input
   ];
-
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
@@ -54,7 +56,7 @@ const PomodoroTimer: React.FC = () => {
   };
 
   const resetTimer = () => {
-    setTimerOption({label: "25 Minutes", minutes: 25})
+    setTimerOption({ label: '25 Minutes', minutes: 25 });
     setMinutes(25);
     setSeconds(0);
     setIsActive(false);
@@ -66,7 +68,6 @@ const PomodoroTimer: React.FC = () => {
     setMinutes(option.minutes);
     setSeconds(0);
   };
-
 
   const styles = buildStyles({
     strokeLinecap: 'butt',
@@ -88,20 +89,30 @@ const PomodoroTimer: React.FC = () => {
       <div className="controls">
         <div className="timer-options">
           {timerOptions.map((option) => (
-            <button key={option.label} onClick={() => handleTimerOptionChange(option)} 
-            className="border border-gray-400 text-white hover:text-gray-900 hover:border-gray-600 px-2 py-1 rounded-md text-sm"
->
+            <button
+              key={option.label}
+              onClick={() => handleTimerOptionChange(option)}
+              className="border border-gray-400 text-white hover:text-gray-900 hover:border-gray-600 px-2 py-1 rounded-md text-sm"
+            >
               {option.label}
             </button>
           ))}
         </div>
       </div>
-        <div className="controls">
-            <button onClick={toggleTimer} className=' hover:text-gray-900 hover:border-gray-600 rounded-full'>
-            {isActive ? 'Pause' : 'Start'}
-            </button>
-            <button onClick={resetTimer} className=' hover:text-gray-900 hover:border-gray-600 rounded-full'>Reset</button>
-        </div>
+      <div className="controls">
+        <button
+          onClick={toggleTimer}
+          className=" hover:text-gray-900 hover:border-gray-600 rounded-full"
+        >
+          {isActive ? 'Pause' : 'Start'}
+        </button>
+        <button
+          onClick={resetTimer}
+          className=" hover:text-gray-900 hover:border-gray-600 rounded-full"
+        >
+          Reset
+        </button>
+      </div>
     </div>
   );
 };

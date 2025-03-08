@@ -6,7 +6,9 @@ import imageCompression from 'browser-image-compression';
 
 jest.mock('browser-image-compression');
 
-const mockCompressedBlob = new Blob(['mock compressed data'], { type: 'image/jpeg' });
+const mockCompressedBlob = new Blob(['mock compressed data'], {
+  type: 'image/jpeg',
+});
 
 describe('ImageCompressor', () => {
   beforeEach(() => {
@@ -15,19 +17,23 @@ describe('ImageCompressor', () => {
   });
 
   afterEach(() => {
-      (console.error as jest.Mock).mockRestore()
+    (console.error as jest.Mock).mockRestore();
   });
 
   it('renders without crashing', () => {
     render(<ImageCompressor />);
     expect(
-      screen.getByText(/Drag and drop an image file here, or click to select a file/i)
+      screen.getByText(
+        /Drag and drop an image file here, or click to select a file/i
+      )
     ).toBeInTheDocument();
   });
 
   it('updates file state when a file is selected', () => {
     render(<ImageCompressor />);
-    const file = new File(['dummy content'], 'dummy.jpg', { type: 'image/jpeg' });
+    const file = new File(['dummy content'], 'dummy.jpg', {
+      type: 'image/jpeg',
+    });
     const input = screen.getByRole('textbox');
     fireEvent.change(input, { target: { files: [file] } });
 
@@ -37,7 +43,9 @@ describe('ImageCompressor', () => {
 
   it('updates file state when a file is dragged and dropped', () => {
     render(<ImageCompressor />);
-    const file = new File(['dummy content'], 'dummy.jpg', { type: 'image/jpeg' });
+    const file = new File(['dummy content'], 'dummy.jpg', {
+      type: 'image/jpeg',
+    });
     const dataTransfer = new DataTransfer();
     dataTransfer.items.add(file);
     const dropArea = screen.getByText(/Drag and drop an image file here/i);
@@ -49,8 +57,12 @@ describe('ImageCompressor', () => {
 
   it('updates compression options', () => {
     render(<ImageCompressor />);
-    const maxSizeInput = screen.getByRole('spinbutton', { name: 'Max Size (MB):' });
-    const maxWidthHeightInput = screen.getByRole('spinbutton', { name: 'Max Width/Height:' });
+    const maxSizeInput = screen.getByRole('spinbutton', {
+      name: 'Max Size (MB):',
+    });
+    const maxWidthHeightInput = screen.getByRole('spinbutton', {
+      name: 'Max Width/Height:',
+    });
     fireEvent.change(maxSizeInput, { target: { value: '2' } });
     fireEvent.change(maxWidthHeightInput, { target: { value: '1000' } });
 
@@ -61,7 +73,9 @@ describe('ImageCompressor', () => {
   it('calls imageCompression with correct parameters and sets compressed file', async () => {
     (imageCompression as jest.Mock).mockResolvedValue(mockCompressedBlob);
     render(<ImageCompressor />);
-    const file = new File(['dummy content'], 'dummy.jpg', { type: 'image/jpeg' });
+    const file = new File(['dummy content'], 'dummy.jpg', {
+      type: 'image/jpeg',
+    });
     const input = screen.getByRole('textbox');
     fireEvent.change(input, { target: { files: [file] } });
 
@@ -74,14 +88,20 @@ describe('ImageCompressor', () => {
         maxWidthOrHeight: 1920,
         useWebWorker: true,
       });
-      expect(screen.getByText(/Download Compressed Image/i)).toBeInTheDocument();
+      expect(
+        screen.getByText(/Download Compressed Image/i)
+      ).toBeInTheDocument();
     });
   });
 
   it('handles image compression error', async () => {
-    (imageCompression as jest.Mock).mockRejectedValue(new Error('Compression failed'));
+    (imageCompression as jest.Mock).mockRejectedValue(
+      new Error('Compression failed')
+    );
     render(<ImageCompressor />);
-    const file = new File(['dummy content'], 'dummy.jpg', { type: 'image/jpeg' });
+    const file = new File(['dummy content'], 'dummy.jpg', {
+      type: 'image/jpeg',
+    });
     const input = screen.getByRole('textbox');
     fireEvent.change(input, { target: { files: [file] } });
 
@@ -89,14 +109,19 @@ describe('ImageCompressor', () => {
     fireEvent.click(compressButton);
 
     await waitFor(() => {
-      expect(console.error).toHaveBeenCalledWith('Error compressing image:', new Error('Compression failed'));
+      expect(console.error).toHaveBeenCalledWith(
+        'Error compressing image:',
+        new Error('Compression failed')
+      );
     });
   });
 
   it('download compressed image', async () => {
     (imageCompression as jest.Mock).mockResolvedValue(mockCompressedBlob);
     render(<ImageCompressor />);
-    const file = new File(['dummy content'], 'dummy.jpg', { type: 'image/jpeg' });
+    const file = new File(['dummy content'], 'dummy.jpg', {
+      type: 'image/jpeg',
+    });
     const input = screen.getByRole('textbox');
     fireEvent.change(input, { target: { files: [file] } });
     const compressButton = screen.getByText(/Compress Image/i);
@@ -108,7 +133,9 @@ describe('ImageCompressor', () => {
         maxWidthOrHeight: 1920,
         useWebWorker: true,
       });
-      expect(screen.getByText(/Download Compressed Image/i)).toBeInTheDocument();
+      expect(
+        screen.getByText(/Download Compressed Image/i)
+      ).toBeInTheDocument();
     });
 
     const downloadButton = screen.getByText('Download Compressed Image');
@@ -143,6 +170,5 @@ describe('ImageCompressor', () => {
     expect(dropArea.parentElement).toHaveClass('border-blue-500');
     fireEvent.dragLeave(dropArea);
     expect(dropArea.parentElement).toHaveClass('border-gray-300');
-
   });
 });

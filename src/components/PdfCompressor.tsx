@@ -37,7 +37,9 @@ const PdfCompressor: React.FC = () => {
     // Compress the PDF by removing unused objects and optimizing the content
     const compressedPdfBytes = await pdfDoc.save({ useObjectStreams: false });
 
-    const compressedBlob = new Blob([compressedPdfBytes], { type: 'application/pdf' });
+    const compressedBlob = new Blob([compressedPdfBytes], {
+      type: 'application/pdf',
+    });
     setCompressedFile(compressedBlob);
   };
 
@@ -60,14 +62,28 @@ const PdfCompressor: React.FC = () => {
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
       >
-        <input type="file" accept="application/pdf" onChange={handleFileChange} className="hidden" />
-        <p className="text-gray-500">Drag and drop a PDF file here, or click to select a file</p>
+        <input
+          type="file"
+          accept="application/pdf"
+          onChange={handleFileChange}
+          className="hidden"
+        />
+        <p className="text-gray-500">
+          Drag and drop a PDF file here, or click to select a file
+        </p>
       </div>
-      <button onClick={compressPdf} disabled={!file} className="mb-2 bg-green-500 text-white py-2 px-4 rounded">
+      <button
+        onClick={compressPdf}
+        disabled={!file}
+        className="mb-2 bg-green-500 text-white py-2 px-4 rounded"
+      >
         Compress PDF
       </button>
       {compressedFile && (
-        <button onClick={downloadCompressedPdf} className="bg-green-500 text-white py-2 px-4 rounded">
+        <button
+          onClick={downloadCompressedPdf}
+          className="bg-green-500 text-white py-2 px-4 rounded"
+        >
           Download Compressed PDF
         </button>
       )}
