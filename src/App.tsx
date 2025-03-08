@@ -1,9 +1,5 @@
-import { useState } from 'react';
 import './App.css';
-import winkNLP from 'wink-nlp';
-import model from 'wink-eng-lite-web-model';
 import Calculator from './components/Calculator';
-import ThreeBackground from './components/ThreeBackground';
 import PdfCompressor from './components/PdfCompressor';
 import {ImageCompressor} from './components/ImageCompressor';
 import NewsComponent from './components/NewsComponent';
@@ -12,14 +8,8 @@ import 'react-tabs/style/react-tabs.css';
 import UnitConverter from './components/UnitConverter/UnitConverter';
 import PomodoroTimer from './components/PomodoroTimer/PomodoroTimer';
 
-const nlp = winkNLP(model);
-const { its } = nlp;
 
 function App() {
-  const [count, setCount] = useState(0);
-  const text = 'Hello World! This is a sample text for tokenization.';
-  const doc = nlp.readDoc(text);
-  const tokens = doc.tokens().out(its.value);
 
   return (
     <>
